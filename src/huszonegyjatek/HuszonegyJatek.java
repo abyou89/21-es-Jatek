@@ -1,8 +1,12 @@
 
 package huszonegyjatek;
 
+import java.util.Scanner;
 
 public class HuszonegyJatek {
+    
+    static Scanner sc = new Scanner(System.in);
+    
     public static int[] jatekos = new int[2],gep = new int[2];
 
     public static void main(String[] args) {
@@ -15,6 +19,7 @@ public class HuszonegyJatek {
     tombFeltoltes();   
     tombKiir();
     bekeres();
+    
     }
 
     private static void tombFeltoltes() {
@@ -53,12 +58,13 @@ public class HuszonegyJatek {
         System.out.println("");
     
     }
-     private static void osszegzesJatekos() {
+     private static int osszegzesJatekos() {
          int osszeg = 0;
          for (int i = 0; i < jatekos.length; i++) {
              osszeg += jatekos[i];
          }
-         System.out.println("A jatekos lapjainak osszege: " + osszeg);
+         
+         return osszeg;
      }
      
     private static void tombKiirGep() {
@@ -73,12 +79,15 @@ public class HuszonegyJatek {
          for (int i = 0; i < gep.length; i++) {
              osszeg += gep[i];
          }
-         System.out.println("A gep lapjainak osszege: " + osszeg);
     
     }
     
-    private static void bekeres() {
-        
+    private static boolean bekeres() {
+        int osszeg = osszegzesJatekos();
+        System.out.printf("a Jatekos lapjainak osszege: %d. Ker meg egy lapot?(i = igen, n = nem)\n",osszeg);
+        String valasz = sc.nextLine();
+        boolean igen = valasz.equals("i");
+        return igen;
     }
     
 }
